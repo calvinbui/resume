@@ -4,21 +4,22 @@
 
 - Install texlive through the official website: https://tug.org/texlive/. Use `basic scheme (plain and latex)` if possible.
 
-If installing with the basic scheme, the following packages are also required, install using:
+- The following packages:
 
-```console
-$ tlmgr install
-  latexmk \
-  enumitem \
-  xifthen \
-  ifmtarg \
-  fontawesome5 \
-  roboto \
-  sourcesanspro \
-  tcolorbox \
-  environ \
-  tikzfill
-```
+    ```console
+    $ tlmgr install
+      latexmk \
+      enumitem \
+      xifthen \
+      ifmtarg \
+      fontawesome5 \
+      roboto \
+      sourcesanspro \
+      tcolorbox \
+      environ \
+      tikzfill \
+      ltablex \
+    ```
 
 ## Editing with VSCode/VSCodium
 
