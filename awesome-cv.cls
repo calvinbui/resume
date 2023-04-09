@@ -90,7 +90,8 @@
 }
 % Solves issues Warning: File `cv.out' has changed
 \RequirePackage{bookmark}
-
+% Solves CV entries not page breaking so early
+\RequirePackage{ltablex}
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
 %-------------------------------------------------------------------------------
@@ -184,11 +185,12 @@
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{13pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\mdseries\color{lighttext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\mdseries\color{lighttext} #1}}
+\newcommand*{\descriptiontitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\normalfont\color{text} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -403,9 +405,9 @@
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
-
+\newcommand{\acvSectionTopSkip}{2mm}
+\newcommand{\acvSectionContentTopSkip}{5mm}
+\newcommand{\acvDescriptionSkip}{0.25cm}
 
 %-------------------------------------------------------------------------------
 %                Commands for utilities
@@ -639,18 +641,22 @@
   \end{center}
 }
 % Define an entry of cv information
-% Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
-\newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
+% Usage: \cventry{<company>}{<title>}{<date>}{<location>}{<key achievements>}{<environment>}{<responsibilities>}
+\newcommand*{\cventry}[7]{%
+  \vspace{-5mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \ifempty{#2#3}
-    {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-  \end{tabular*}%
+  \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 0cm} R{0cm}}
+    \ifempty{#1} {} {\entrytitlestyle{#1} \\}
+    \ifempty{#2} {} {\entrypositionstyle{#2} \\}
+    \ifempty{#3} {} {\entrydatestyle{#3} \\}
+    \ifempty{#4} {} {\entrylocationstyle{#4}}
+    \ifempty{#5} {}
+    {\vspace{\acvDescriptionSkip}            \\
+    \descriptiontitlestyle{Key Achievements} \\ \descriptionstyle{#5} \\
+    \descriptiontitlestyle{Environment}      \\ \descriptionstyle{#6} \\
+    \descriptiontitlestyle{Responsibilities} \\ \descriptionstyle{#7}}
+  \end{tabularx}%
 }
 
 % Define an environment for cvsubentry
