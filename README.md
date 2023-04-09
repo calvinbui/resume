@@ -2,36 +2,32 @@
 
 ## Requirements
 
-Install texlive through the official website: https://tug.org/texlive/
+- Install texlive through the official website: https://tug.org/texlive/. Use `basic scheme (plain and latex)` if possible.
 
-If you don't want to install the dependencies on your system, this can also be obtained via [Docker](https://docker.com).
+If installing with the basic scheme, the following packages are also required, install using:
 
-## Usage
-
-At a command prompt, run
-
-```bash
-xelatex {your-cv}.tex
+```console
+$ tlmgr install
+  latexmk \
+  enumitem \
+  xifthen \
+  ifmtarg \
+  fontawesome5 \
+  roboto \
+  sourcesanspro \
+  tcolorbox \
+  environ \
+  tikzfill
 ```
 
-Or using docker:
-
-```bash
-docker run --rm --user $(id -u):$(id -g) -i -w "/doc" -v "$PWD":/doc thomasweise/texlive make
-```
-
-In either case, this should result in the creation of ``{your-cv}.pdf``
-
-
-## VSCode/VSCodium
+## Editing with VSCode/VSCodium
 
 Install `LaTex Workshop` and add:
 
 ```json5
 "latex-workshop.latex.build.forceRecipeUsage": false,
 "latex-workshop.linting.chktex.enabled": true,
-
-``` 
+```
 
 to user settings.json
 
@@ -44,4 +40,13 @@ brew install perl
 brew install cpanm
 cpanm YAML::Tiny
 cpanm File::HomeDir
+```
+
+## Ubuntu
+
+```console
+sudo apt-get update
+sudo apt-get install cpanminus
+sudo cpanm YAML::Tiny
+sudo cpanm File::HomeDir
 ```
