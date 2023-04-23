@@ -402,13 +402,13 @@
 \newcommand{\acvHeaderIconSep}{\space}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderSpacing}{2mm}
-\newcommand{\acvHeaderAfterSocialSkip}{6mm}
-\newcommand{\acvHeaderAfterQuoteSkip}{1mm}
+\newcommand{\acvHeaderAfterSocialSkip}{4mm}
+\newcommand{\acvHeaderAfterQuoteSkip}{0mm}
 
 % Others
 \newcommand{\acvSectionTopSkip}{2mm}
 \newcommand{\acvSectionContentTopSkip}{5mm}
-\newcommand{\acvDescriptionSkip}{0.25cm}
+\newcommand{\acvDescriptionSkip}{1mm}
 
 %-------------------------------------------------------------------------------
 %                Commands for utilities
