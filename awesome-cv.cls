@@ -637,16 +637,16 @@
   \vspace{2mm}
 }
 
-% Define an environment for cventry
-\newenvironment{cventries}{%
+% Define an environment for expitem
+\newenvironment{experiences}{%
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
     }{%
   \end{center}
 }
 % Define an entry of cv information
-% Usage: \cventry{<company>}{<title>}{<date>}{<location>}{<key achievements>}{<environment>}{<responsibilities>}
-\newcommand*{\cventry}[7]{%
+% Usage: \expitem{<company>}{<title>}{<date>}{<location>}{<key achievements>}{<environment>}{<responsibilities>}
+\newcommand*{\expitem}[7]{%
   \vspace{-5mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
@@ -723,7 +723,7 @@
   \skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
-% Define an environment for cvitems(for cventry)
+% Define an environment for cvitems
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}
   \begin{justify}
