@@ -637,6 +637,10 @@
   \vspace{2mm}
 }
 
+%-------------------------------------------------------------------------------
+%                Experience
+%-------------------------------------------------------------------------------
+
 % Define an environment for expitem
 \newenvironment{experiences}{%
   \vspace{\acvSectionContentTopSkip}
@@ -645,9 +649,9 @@
   \end{center}
 }
 % Define an entry of cv information
-% Usage: \expitem{<company>}{<title>}{<date>}{<location>}{<key achievements>}{<environment>}{<responsibilities>}
+% Usage: \expitem{<company>}{<title>}{<date>}{<location>}{<environment>}{<responsibilities>}{<key achievements>}
 \newcommand*{\expitem}[7]{%
-  \vspace{-5mm}
+  \vspace{-3mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 0cm} R{0cm}}
@@ -657,11 +661,62 @@
     \ifempty{#4} {} {\entrylocationstyle{#4}}
     \ifempty{#5} {}
     {\vspace{\acvDescriptionSkip}            \\
-    \descriptiontitlestyle{Key Achievements} \\ \descriptionstyle{#5} \\
-    \descriptiontitlestyle{Environment}      \\ \descriptionstyle{#6} \\
-    \descriptiontitlestyle{Responsibilities} \\ \descriptionstyle{#7}}
+    \descriptiontitlestyle{Environment}      \\ \descriptionstyle{#5} \\
+    \descriptiontitlestyle{Responsibilities} \\ \descriptionstyle{#6} \\
+    \descriptiontitlestyle{Key Achievements} \\ \descriptionstyle{#7}}
   \end{tabularx}%
 }
+
+%-------------------------------------------------------------------------------
+%                Education
+%-------------------------------------------------------------------------------
+
+% Define an environment for eduitem
+\newenvironment{education}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+    }{%
+  \end{center}
+}
+% Define an entry of cv information
+% Usage: \eduitem{<institution>}{<date>}{<description>}
+\newcommand*{\eduitem}[3]{%
+  \vspace{-5mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 0cm} R{0cm}}
+    \ifempty{#1} {} {\entrypositionstyle{#1}} - \ifempty{#2} {} {\entrylocationstyle{#2}} % not a date, but it works better
+    \ifempty{#3} {}
+    {\descriptiontitlestyle{} \\ \descriptionstyle{#3}}
+  \end{tabularx}%
+}
+
+%-------------------------------------------------------------------------------
+%                Extra-extracurricular
+%-------------------------------------------------------------------------------
+% Define an environment for ecitem
+\newenvironment{extracurricular}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+    }{%
+  \end{center}
+}
+% Define an entry of cv information
+% Usage: \ecitem{<name>}{<date>}{<description>}
+\newcommand*{\ecitem}[3]{%
+  \vspace{-5mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 0cm} R{0cm}}
+    \ifempty{#1} {} {\entrypositionstyle{#1}} - \ifempty{#2} {} {\entrylocationstyle{#2}} % not a date, but it works better
+    \ifempty{#3} {}
+    {\descriptiontitlestyle{} \\ \descriptionstyle{#3}}
+  \end{tabularx}%
+}
+
+%-------------------------------------------------------------------------------
+%                Extra Entries
+%-------------------------------------------------------------------------------
 
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
@@ -687,42 +742,6 @@
   \end{tabular*}
 }
 
-% Define an environment for cvhonor
-\newenvironment{cvhonors}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2mm}
-  \begin{center}
-    \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
-      }{%
-    \end{tabular*}
-  \end{center}
-}
-% Define a line of cv information(honor, award or something else)
-% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
-\newcommand*{\cvhonor}[4]{%
-  \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
-}
-
-% Define an environment for cvskill
-\newenvironment{cvskills}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \begin{center}
-    \setlength\tabcolsep{1ex}
-    \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
-      }{%
-    \end{tabular*}
-  \end{center}
-}
-% Define a line of cv information(skill)
-% Usage: \cvskill{<type>}{<skillset>}
-\newcommand*{\cvskill}[2]{%
-  \skilltypestyle{#1} & \skillsetstyle{#2} \\
-}
-
 % Define an environment for cvitems
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}
@@ -735,7 +754,6 @@
   \end{justify}
   \vspace{-4.0mm}
 }
-
 
 %-------------------------------------------------------------------------------
 %                Commands for elements of Cover Letter
