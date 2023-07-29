@@ -7,7 +7,7 @@
 - The following packages:
 
     ```console
-    $ tlmgr install
+    $ tlmgr install \
       latexmk \
       enumitem \
       xifthen \
@@ -18,7 +18,7 @@
       tcolorbox \
       environ \
       tikzfill \
-      ltablex \
+      ltablex
     ```
 
 ## Editing with VSCode/VSCodium
