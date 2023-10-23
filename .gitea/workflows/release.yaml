@@ -17,8 +17,11 @@ jobs:
     container: texlive/texlive:latest
 
     steps:
+      - name: Install Node.js
+        run: apt-get update && apt-get install -y --no-install-recommends nodejs
+
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Put real email and phone number
         env:
