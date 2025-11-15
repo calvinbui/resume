@@ -1,0 +1,35 @@
+---
+
+when:
+  - event: push
+
+steps:
+  - name: inject email and mobile
+    image: bash
+    environment:
+      PHONE_NUMBER:
+        from_secret: PHONE_NUMBER
+      EMAIL_ADDRESS:
+        from_secret: EMAIL_ADDRESS
+    commands:
+      - sed -i "s/444 444 444/${PHONE_NUMBER}/" resume.tex
+      - sed -i "s/example@email.com/${EMAIL_ADDRESS}/" resume.tex
+
+  - name: compile
+    image: bash
+    commands:
+      - make resume.pdf
+
+  - name: upload
+    image: bash
+    environment:
+      S3_ENDPOINT:
+        from_secret: S3_ENDPOINT
+      AWS_ACCESS_KEY_ID:
+        from_secret: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY:
+        from_secret: AWS_SECRET_ACCESS_KEY
+    commands:
+      - cd output
+      - plugin-s3 --path-style --bucket resume --source resume.pdf
+
