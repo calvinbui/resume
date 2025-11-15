@@ -404,6 +404,7 @@
 \newcommand{\acvHeaderSpacing}{2mm}
 \newcommand{\acvHeaderAfterSocialSkip}{4mm}
 \newcommand{\acvHeaderAfterQuoteSkip}{0mm}
+\newcommand{\acvSubHeaderSpacing}{4mm}
 
 % Others
 \newcommand{\acvSectionTopSkip}{2mm}
@@ -651,7 +652,7 @@
 % Define an entry of cv information
 % Usage: \expitem{<company>}{<title>}{<date>}{<location>}{<environment>}{<responsibilities>}{<key achievements>}
 \newcommand*{\expitem}[7]{%
-  \vspace{-3mm}
+  \vspace{-4mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 0cm} R{0cm}}
@@ -662,8 +663,10 @@
     \ifempty{#5} {}
     {\vspace{\acvDescriptionSkip}            \\
     \descriptiontitlestyle{Environment}      \\ \descriptionstyle{#5} \\
+    \noalign{\vspace{\acvSubHeaderSpacing}}
     \descriptiontitlestyle{Responsibilities} \\ \descriptionstyle{#6} \\
-    \descriptiontitlestyle{Key Achievements} \\ \descriptionstyle{#7}}
+    \noalign{\vspace{\acvSubHeaderSpacing}}
+    \descriptiontitlestyle{Key Achievements} \\ \descriptionstyle{#7}} \\
   \end{tabularx}%
 }
 
@@ -744,7 +747,7 @@
 
 % Define an environment for cvitems
 \newenvironment{cvitems}{%
-  \vspace{-4.0mm}
+  \vspace{-2.0mm}
   \begin{justify}
     \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
       \setlength{\parskip}{0pt}
@@ -752,7 +755,7 @@
       }{%
     \end{itemize}
   \end{justify}
-  \vspace{-4.0mm}
+  \vspace{-2.0mm}
 }
 
 %-------------------------------------------------------------------------------
