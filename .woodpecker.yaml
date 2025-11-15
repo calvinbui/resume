@@ -12,8 +12,8 @@ steps:
       EMAIL_ADDRESS:
         from_secret: EMAIL_ADDRESS
     commands:
-      - sed -i "s/444 444 444/${PHONE_NUMBER}/" resume.tex
-      - sed -i "s/example@email.com/${EMAIL_ADDRESS}/" resume.tex
+      - sed -i "s/444 444 444/$${PHONE_NUMBER}/" resume.tex
+      - sed -i "s/example@email.com/$${EMAIL_ADDRESS}/" resume.tex
 
   - name: compile
     image: bash
