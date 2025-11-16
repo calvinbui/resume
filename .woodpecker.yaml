@@ -22,13 +22,6 @@ steps:
 
   - name: upload
     image: bash
-    environment:
-      S3_ENDPOINT:
-        from_secret: S3_ENDPOINT
-      AWS_ACCESS_KEY_ID:
-        from_secret: AWS_ACCESS_KEY_ID
-      AWS_SECRET_ACCESS_KEY:
-        from_secret: AWS_SECRET_ACCESS_KEY
     commands:
       - cd output
       - plugin-s3 --path-style --bucket resume --source resume.pdf
