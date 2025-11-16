@@ -26,3 +26,10 @@ steps:
       - cd output
       - plugin-s3 --path-style --bucket resume --source resume.pdf
 
+  - name: fail-notification
+    image: bash
+    commands:
+      - mattermost-notify
+    when:
+      status:
+        - failure
